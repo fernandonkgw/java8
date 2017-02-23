@@ -1,8 +1,9 @@
 package br.com.fnkgw.java8;
 
+import static java.util.Comparator.comparing;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class OrdenaStrings {
 
@@ -13,11 +14,9 @@ public class OrdenaStrings {
 		palavras.add("casa do código");
 		palavras.add("caelum");
 
-		palavras.sort((String s1, String s2) -> Integer.compare(s1.length(), s2.length()));
+		palavras.sort(comparing(String::length));
 
-		palavras.forEach(s -> System.out.println(s));
-		
-		Consumer o = s -> System.out.println(s);
+		palavras.forEach(System.out::println);
 		
 		new Thread(() -> System.out.println("Executando um Runnable")).start();
 	}
