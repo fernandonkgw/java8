@@ -3,6 +3,9 @@ package br.com.fnkgw.java8;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.stream.Collectors;
 
 public class StreamDeCursos {
 
@@ -28,5 +31,17 @@ public class StreamDeCursos {
 		   .filter(c -> c.getAlunos() > 50)
 		   .mapToInt(Curso::getAlunos)
 		   .forEach(System.out::println);
+		
+		Optional<Curso> optionalPrimeiroCurso = cursos.stream()
+				.filter(c -> c.getAlunos() > 50)
+				.findFirst();
+		
+		cursos.stream()
+			.mapToInt(Curso::getAlunos)
+			.average()
+			.ifPresent(m -> System.out.println(m));
+		
+		List<Curso> cursosFiltrados = cursos.stream().filter(c -> c.getAlunos() > 50).collect(Collectors.toList());
+		cursosFiltrados.forEach(c -> System.out.println(c.getNome()));
 	}
 }
