@@ -41,7 +41,9 @@ public class StreamDeCursos {
 			.average()
 			.ifPresent(m -> System.out.println(m));
 		
-		List<Curso> cursosFiltrados = cursos.stream().filter(c -> c.getAlunos() > 50).collect(Collectors.toList());
+		List<Curso> cursosFiltrados = cursos.stream()
+				.filter(c -> c.getAlunos() > 50)
+				.collect(Collectors.toList());
 		cursosFiltrados.forEach(c -> System.out.println(c.getNome()));
 	}
 }
